@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXONA | We are the impulse</title>
+    <style>
+        body {
+            background-color: #0A0A0C;
+            color: #00F0FF;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+        }
+        img.logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .manifesto {
+            color: #E0E0E0;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        input[type="email"] {
+            background-color: transparent;
+            border: 1px solid #00F0FF;
+            color: #FFF;
+            padding: 12px;
+            width: 80%;
+            margin-bottom: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            outline: none;
+        }
+        .legal {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 20px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+        }
+        .legal input {
+            margin-top: 3px;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #FF0055;
+            color: #FFF;
+            border: none;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #00F0FF; color: #0A0A0C; }
+        #success-msg { display: none; color: #00F0FF; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo-ul incarcat de tine -->
+        <img src="logo.jpeg" alt="AXONA Logo" class="logo">
+        
+        <div class="manifesto">
+            <p>In an era of algorithmic numbness, the human signal went quiet.<br>
+            The mind became a passive spectator.</p>
+            <p><strong>AXONA is the high-voltage bypass.</strong></p>
+            <p>Plug in or remain asleep. Enter your neural address below for encrypted updates and transmission keys.</p>
+        </div>
+
+        <form id="axona-form">
+            <input type="email" name="email" id="email" placeholder="ENTER_EMAIL_ADDRESS" required>
+            
+            <div class="legal">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">I consent to the collection of my email address to receive AXONA updates. I understand my data is stored securely and I can opt-out at any time.</label>
+            </div>
+
+            <button type="submit" id="btn-submit">[ INITIALIZE PROTOCOL ]</button>
+        </form>
+
+        <div id="success-msg">TRANSMISSION RECEIVED. WELCOME TO THE RESISTANCE.</div>
+    </div>
+
+<script>
+        document.getElementById('axona-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            var btn = document.getElementById('btn-submit');
+            btn.innerText = "INITIALIZING...";
+            
+            // INLOCUIESTE LINKUL DE MAI JOS CU CEL DE LA GOOGLE APPS SCRIPT
+            var googleUrl = "https://script.google.com/macros/s/AKfycbwdd2oqqjTbEPv_nTRj2s4Mw6NhAXvgcBHZ-D21cHm7TuJ7g1WhC2aJM8ILXr3sTS5z/exec";
+            
+            fetch(googleUrl, { 
+                method: 'POST', 
+                mode: 'no-cors', // Aceasta este regula adăugată pentru a evita blocajele de securitate
+                body: new URLSearchParams(new FormData(form)) 
+            })
+            .then(() => {
+                // Ascundem formularul si afisam mesajul de succes
+                form.style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+            })
+            .catch(error => {
+                btn.innerText = "ERROR. TRY AGAIN.";
+            });
+        });
+    </script>    
+</body>
+</html>
