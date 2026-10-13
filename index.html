@@ -1,126 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXONA | We are the impulse</title>
-    <style>
-        body {
-            background-color: #0A0A0C;
-            color: #00F0FF;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 20px;
-        }
-        img.logo {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-        .manifesto {
-            color: #E0E0E0;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        input[type="email"] {
-            background-color: transparent;
-            border: 1px solid #00F0FF;
-            color: #FFF;
-            padding: 12px;
-            width: 80%;
-            margin-bottom: 15px;
-            font-family: 'Courier New', Courier, monospace;
-            outline: none;
-        }
-        .legal {
-            font-size: 11px;
-            color: #888;
-            margin-bottom: 20px;
-            text-align: left;
-            display: flex;
-            align-items: flex-start;
-        }
-        .legal input {
-            margin-top: 3px;
-            margin-right: 10px;
-        }
-        button {
-            background-color: #FF0055;
-            color: #FFF;
-            border: none;
-            padding: 12px 24px;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: background 0.3s;
-        }
-        button:hover { background-color: #00F0FF; color: #0A0A0C; }
-        #success-msg { display: none; color: #00F0FF; margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ==================== META SEO CLASIC & GEO / AI INDEXING ==================== -->
+  <title>AXONA // Official Transmission Terminal | Cyber-Metalcore</title>
+  <meta name="description" content="Official transmission terminal for AXONA. Next-generation cyber-metalcore collective. Stream the 40s lineup reveal trailer and intercept the unreleased .WAV master track.">
+  <meta name="keywords" content="AXONA, We Are The Impulse, weareaxona, Cyber Metalcore, Industrial Rock, Synthex, Neura, Overclock, Glitch, Djent, Techwear">
+  <meta name="author" content="AXONA">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://weareaxona.com/">
+
+  <!-- Open Graph / Facebook / Discord Previews -->
+  <meta property="og:type" content="music.band">
+  <meta property="og:title" content="AXONA // We Are The Impulse">
+  <meta property="og:description" content="Four decentralized vessels synchronized at 160 BPM. Watch the lineup reveal trailer and intercept the unreleased master track.">
+  <meta property="og:url" content="https://weareaxona.com/">
+  <meta property="og:image" content="https://weareaxona.com/og-cover.jpg">
+  <meta property="og:site_name" content="AXONA Official Terminal">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@weareaxona">
+  <meta name="twitter:creator" content="@weareaxona">
+  <meta name="twitter:title" content="AXONA // Official Lineup Reveal">
+  <meta name="twitter:description" content="Cyber-metalcore forged through modular synthesis and industrial percussion. We Are The Impulse.">
+  <meta name="twitter:image" content="https://weareaxona.com/og-cover.jpg">
+
+  <!-- ==================== PACHET ICONIȚE / FAVICON ==================== -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#05070c">
+
+  <!-- ==================== SCHEMA.ORG JSON-LD (PENTRU GOOGLE & LLM-URI) ==================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MusicGroup",
+        "@id": "https://weareaxona.com/#musicgroup",
+        "name": "AXONA",
+        "alternateName": "AXONA Band",
+        "description": "A next-generation cyber-metalcore and industrial electronic rock collective operating through decentralized vessels.",
+        "genre": ["Cyber Metalcore", "Industrial Metal", "Electronic Rock", "Modern Metalcore", "Djent"],
+        "url": "https://weareaxona.com",
+        "logo": "https://weareaxona.com/logo.png",
+        "slogan": "We Are The Impulse",
+        "member": [
+          { "@type": "Person", "name": "Synthex", "roleName": "Lead Vocals & Signal Anchor" },
+          { "@type": "Person", "name": "Neura", "roleName": "Lead Guitar & Bionic Execution" },
+          { "@type": "Person", "name": "Overclock", "roleName": "Industrial Percussion (160 BPM)" },
+          { "@type": "Person", "name": "Glitch", "roleName": "Modular Synthesizers & Sound Design" }
+        ],
+        "sameAs": [
+          "https://www.youtube.com/@weareaxona",
+          "https://www.tiktok.com/@weareaxona",
+          "https://www.instagram.com/weareaxona",
+          "https://bsky.app/profile/weareaxona.bsky.social"
+        ]
+      },
+      {
+        "@type": "VideoObject",
+        "name": "AXONA // Official Lineup Reveal Trailer",
+        "description": "Official 40-second lineup reveal teaser assembling all four vessels of AXONA.",
+        "thumbnailUrl": "https://weareaxona.com/og-cover.jpg",
+        "uploadDate": "2026-10-13T17:30:00+03:00",
+        "duration": "PT40S",
+        "contentUrl": "https://weareaxona.com/lv_0_20261013173004.mp4"
+      }
+    ]
+  }
+  </script>
+
+  <!-- ==================== STILURI VIZUALE CYBERPUNK ==================== -->
+  <style>
+    :root {
+      --bg: #05070c;
+      --panel: #0b0f19;
+      --cyan: #00f0ff;
+      --magenta: #ff007f;
+      --amber: #ff9900;
+      --text: #e0e6ed;
+      --dim: #7a889b;
+      --font-mono: 'Consolas', 'Courier New', monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 15px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    .terminal-wrapper {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    /* HEADER */
+    .brand-header {
+      text-align: center;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      letter-spacing: 0.35em;
+      color: #fff;
+      text-shadow: 0 0 15px var(--cyan), 0 0 30px rgba(0, 240, 255, 0.4);
+      margin-bottom: 6px;
+    }
+
+    .brand-subtitle {
+      font-family: var(--font-mono);
+      font-size: clamp(0.75rem, 3vw, 0.95rem);
+      letter-spacing: 0.25em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+
+    /* TERMINAL VIDEO CASE */
+    .terminal-box {
+      width: 100%;
+      background: var(--panel);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 6px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.15);
+      overflow: hidden;
+    }
+
+    .terminal-topbar {
+      background: #070a12;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--cyan);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot { width: 9px; height: 9px; border-radius: 50%; }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .video-viewport {
+      position: relative;
+      width: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* PLAYER VIDEO */
+    video.axona-media {
+      width: 100%;
+      max-height: 75vh;
+      display: block;
+      background: #000;
+      outline: none;
+    }
+
+    /* PORTAL FORMULAR CONVERSIE */
+    .access-portal {
+      width: 100%;
+      background: var(--panel);
+      border: 1px solid rgba(255, 0, 127, 0.3);
+      border-radius: 6px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255, 0, 127, 0.1);
+      text-align: center;
+    }
+
+    .portal-title {
+      font-family: var(--font-mono);
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      color: #fff;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .portal-desc {
+      color: var(--dim);
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .portal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 580px) {
+      .portal-form { flex-direction: row; }
+    }
+
+    .portal-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: #05070c;
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 4px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .portal-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+    }
+
+    .portal-btn {
+      padding: 14px 28px;
+      background: var(--cyan);
+      color: #05070c;
+      border: none;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    }
+
+    .portal-btn:hover {
+      background: #4ef5ff;
+      box-shadow: 0 0 18px var(--cyan);
+    }
+
+    .portal-btn:active { transform: scale(0.98); }
+
+    .status-alert {
+      margin-top: 15px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      min-height: 20px;
+    }
+
+    /* GRILĂ STATUT MEMBRI (VESSELS) */
+    .vessels-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .vessel-card {
+      background: rgba(11, 15, 25, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 16px;
+      text-align: left;
+      font-family: var(--font-mono);
+    }
+
+    .vessel-id { color: var(--cyan); font-size: 0.75rem; margin-bottom: 4px; }
+    .vessel-name { color: #fff; font-size: 1.05rem; font-weight: bold; margin-bottom: 2px; }
+    .vessel-role { color: var(--dim); font-size: 0.8rem; }
+
+    /* FOOTER */
+    .site-footer {
+      text-align: center;
+      margin-top: 15px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--dim);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+
+    .social-links a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: var(--magenta); }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Logo-ul incarcat de tine -->
-        <img src="logo.jpeg" alt="AXONA Logo" class="logo">
-        
-        <div class="manifesto">
-            <p>In an era of algorithmic numbness, the human signal went quiet.<br>
-            The mind became a passive spectator.</p>
-            <p><strong>AXONA is the high-voltage bypass.</strong></p>
-            <p>Plug in or remain asleep. Enter your neural address below for encrypted updates and transmission keys.</p>
+  <div class="terminal-wrapper">
+    
+    <!-- HEADER -->
+    <header class="brand-header">
+      <h1 class="brand-title">AXONA</h1>
+      <p class="brand-subtitle">WE ARE THE IMPULSE</p>
+    </header>
+
+    <!-- CONTAINER VIDEO PENTRU TEASER-UL DE 40 SECUNDE -->
+    <main class="terminal-box">
+      <div class="terminal-topbar">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
         </div>
+        <span>TRANSMISSION_FEED // 40S_LINEUP_REVEAL.MP4</span>
+        <span>REC [LIVE]</span>
+      </div>
 
-        <form id="axona-form">
-            <input type="email" name="email" id="email" placeholder="ENTER_EMAIL_ADDRESS" required>
-            
-            <div class="legal">
-                <input type="checkbox" id="consent" required>
-                <label for="consent">I consent to the collection of my email address to receive AXONA updates. I understand my data is stored securely and I can opt-out at any time.</label>
-            </div>
+      <div class="video-viewport">
+        <!-- 
+          Fișierul tău local de 43MB.
+          preload="metadata" asigură că browserul citește doar durata și formatul, 
+          fără să descarce toți cei 43MB la încărcarea inițială pe telefon.
+        -->
+        <video 
+          class="axona-media" 
+          controls 
+          playsinline 
+          preload="metadata"
+          poster="og-cover.jpg">
+          <source src="lv_0_20261013173004.mp4" type="video/mp4">
+          Terminal error: Browserul nu suportă redarea video HTML5.
+        </video>
+      </div>
+    </main>
 
-            <button type="submit" id="btn-submit">[ INITIALIZE PROTOCOL ]</button>
-        </form>
+    <!-- FORMULAR CAPTARE EMAIL (GOOGLE APPS SCRIPT) -->
+    <section class="access-portal">
+      <h2 class="portal-title">INTERCEPT THE MASTER SIGNAL</h2>
+      <p class="portal-desc">
+        Enter your terminal address to receive the unreleased .WAV master track<br>
+        and encrypted transmission dossiers before global streaming distribution.
+      </p>
 
-        <div id="success-msg">TRANSMISSION RECEIVED. WELCOME TO THE RESISTANCE.</div>
-    </div>
+      <form id="frequency-form" class="portal-form">
+        <input 
+          type="email" 
+          id="email-input" 
+          class="portal-input" 
+          placeholder="operator@network.com" 
+          required 
+          autocomplete="email">
+        <button type="submit" id="submit-btn" class="portal-btn">DECODE</button>
+      </form>
+      <div id="status-message" class="status-alert"></div>
+    </section>
 
-<script>
-        document.getElementById('axona-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var form = this;
-            var btn = document.getElementById('btn-submit');
-            btn.innerText = "INITIALIZING...";
-            
-            // INLOCUIESTE LINKUL DE MAI JOS CU CEL DE LA GOOGLE APPS SCRIPT
-            var googleUrl = "https://script.google.com/macros/s/AKfycbwdd2oqqjTbEPv_nTRj2s4Mw6NhAXvgcBHZ-D21cHm7TuJ7g1WhC2aJM8ILXr3sTS5z/exec";
-            
-            fetch(googleUrl, { 
-                method: 'POST', 
-                mode: 'no-cors', // Aceasta este regula adăugată pentru a evita blocajele de securitate
-                body: new URLSearchParams(new FormData(form)) 
-            })
-            .then(() => {
-                // Ascundem formularul si afisam mesajul de succes
-                form.style.display = 'none';
-                document.getElementById('success-msg').style.display = 'block';
-            })
-            .catch(error => {
-                btn.innerText = "ERROR. TRY AGAIN.";
-            });
-        });
-    </script>    
+    <!-- STATUTUL CELOR 4 MEMBRI (VESSELS) -->
+    <section class="vessels-grid">
+      <article class="vessel-card">
+        <div class="vessel-id">VESSEL 01</div>
+        <div class="vessel-name">SYNTHEX</div>
+        <div class="vessel-role">Vocals & Signal Anchor</div>
+      </article>
+      <article class="vessel-card">
+        <div class="vessel-id">VESSEL 02</div>
+        <div class="vessel-name">NEURA</div>
+        <div class="vessel-role">Lead Guitar & Bionic Execution</div>
+      </article>
+      <article class="vessel-card">
+        <div class="vessel-id">VESSEL 03</div>
+        <div class="vessel-name">OVERCLOCK</div>
+        <div class="vessel-role">Industrial Drums (160 BPM)</div>
+      </article>
+      <article class="vessel-card">
+        <div class="vessel-id">VESSEL 04</div>
+        <div class="vessel-name">GLITCH</div>
+        <div class="vessel-role">Modular Synthesis & Sound</div>
+      </article>
+    </section>
+
+    <!-- FOOTER & LINKURI SOCIALE -->
+    <footer class="site-footer">
+      <div class="social-links">
+        <a href="https://www.youtube.com/@weareaxona" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.tiktok.com/@weareaxona" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/weareaxona" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://bsky.app/profile/weareaxona.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+      </div>
+      <p>&copy; 2026 AXONA. Decentralized Signal Collective. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- JAVASCRIPT: LOGICĂ TRIMITERE CĂTRE GOOGLE APPS SCRIPT -->
+  <script>
+    // Lipește URL-ul tău Google Web App terminat în /exec
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdd2oqqjTbEPv_nTRj2s4Mw6NhAXvgcBHZ-D21cHm7TuJ7g1WhC2aJM8ILXr3sTS5z/exec";
+
+    const form = document.getElementById("frequency-form");
+    const emailInput = document.getElementById("email-input");
+    const submitBtn = document.getElementById("submit-btn");
+    const statusMessage = document.getElementById("status-message");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const emailValue = emailInput.value.trim();
+      if (!emailValue) return;
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "LINKING...";
+      statusMessage.style.color = "var(--cyan)";
+      statusMessage.innerText = "ESTABLISHING FREQUENCY...";
+
+      const formData = new FormData();
+      formData.append("email", emailValue);
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(() => {
+        statusMessage.style.color = "var(--cyan)";
+        statusMessage.innerText = "SIGNAL CONFIRMED // ACCESS GRANTED.";
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerText = "DECODE";
+      })
+      .catch(err => {
+        console.error(err);
+        statusMessage.style.color = "var(--magenta)";
+        statusMessage.innerText = "ERROR // TRANSMISSION FAILED. RETRY.";
+        submitBtn.disabled = false;
+        submitBtn.innerText = "DECODE";
+      });
+    });
+  </script>
 </body>
 </html>
