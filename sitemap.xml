@@ -31,4 +31,40 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://weareaxona.com/synthex/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://weareaxona.com/char/synthex-hero.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://weareaxona.com/neura/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://weareaxona.com/char/neura-hero.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://weareaxona.com/overclock/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://weareaxona.com/char/overclock-hero.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://weareaxona.com/glitch/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://weareaxona.com/char/glitch-hero.jpg</image:loc>
+    </image:image>
+  </url>
 </urlset>

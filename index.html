@@ -552,6 +552,22 @@
     }
 
     /* ---------- vessels ---------- */
+    .vessel-more {
+      display: inline-block;
+      margin-top: 18px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s, letter-spacing .2s;
+    }
+
+    .vessel-more:hover {
+      border-bottom-color: var(--cyan);
+      letter-spacing: 0.22em;
+    }
+
     .vessels-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -842,6 +858,8 @@
           <h3 class="vessel-name">SYNTHEX</h3>
           <p class="vessel-role">Lead Vocals &amp; Signal Anchor</p>
           <p class="vessel-desc">The voice of AXONA. A vocoder-shaped synthetic vocal identity that carries the collective's manifest — the anchor point every other vessel synchronizes against.</p>
+        
+          <a class="vessel-more" href="/synthex/">&rarr; READ FILE</a>
         </article>
 
         <article class="vessel-card" id="neura">
@@ -849,6 +867,8 @@
           <h3 class="vessel-name">NEURA</h3>
           <p class="vessel-role">Lead Guitar &amp; Bionic Execution</p>
           <p class="vessel-desc">Razor-wire eight-string riffs executed through a bionic prosthetic arm. Neura builds the structural aggression beneath every track.</p>
+        
+          <a class="vessel-more" href="/neura/">&rarr; READ FILE</a>
         </article>
 
         <article class="vessel-card" id="overclock">
@@ -856,6 +876,8 @@
           <h3 class="vessel-name">OVERCLOCK</h3>
           <p class="vessel-role">Industrial Percussion · 160 BPM</p>
           <p class="vessel-desc">The engine room. Acoustic drums fused with hydraulic machinery, driving a relentless 160 BPM pulse that defines the AXONA tempo.</p>
+        
+          <a class="vessel-more" href="/overclock/">&rarr; READ FILE</a>
         </article>
 
         <article class="vessel-card" id="glitch">
@@ -863,6 +885,8 @@
           <h3 class="vessel-name">GLITCH</h3>
           <p class="vessel-role">Modular Synthesis &amp; Sound Design</p>
           <p class="vessel-desc">Signal texture and controlled corruption. Glitch generates the modular undercurrent that separates AXONA from conventional metalcore.</p>
+        
+          <a class="vessel-more" href="/glitch/">&rarr; READ FILE</a>
         </article>
       </div>
     </div>
