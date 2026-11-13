@@ -52,8 +52,7 @@
   <link rel="alternate" type="text/plain" href="/llms.txt" title="AXONA — machine-readable summary">
 
   <!-- ==================== PERFORMANCE ==================== -->
-  <link rel="preload" as="image" href="/logo-wordmark.png">
-  <link rel="preload" as="image" href="/hero-poster.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/lineup-poster.jpg" fetchpriority="high">
   <link rel="dns-prefetch" href="https://media.weareaxona.com">
   <link rel="preconnect" href="https://media.weareaxona.com" crossorigin>
 
@@ -81,8 +80,7 @@
         },
         "image": [
           "https://weareaxona.com/og-cover.jpg",
-          "https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg",
-          "https://weareaxona.com/hero-poster.jpg"
+          "https://media.weareaxona.com/axona/cover/cover-official-v3b.jpg"
         ],
         "slogan": "We Are The Impulse",
         "foundingDate": "2026",
@@ -142,7 +140,7 @@
         "byArtist": { "@id": "https://weareaxona.com/#musicgroup" },
         "datePublished": "2026-12-11",
         "genre": ["Cyber Metalcore", "Industrial Metal"],
-        "image": "https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg",
+        "image": "https://media.weareaxona.com/axona/cover/cover-official-v3b.jpg",
         "url": "https://weareaxona.com/#listen",
         "potentialAction": {
           "@type": "ListenAction",
@@ -267,15 +265,10 @@
       z-index: 15;
     }
     .nav-logo {
-      height: clamp(22px, 3.4vw, 30px);
+      height: clamp(34px, 5vw, 46px);
       width: auto;
       display: block;
-    }
-    .nav-avatar {
-      height: clamp(30px, 4.4vw, 40px);
-      width: auto;
-      border-radius: 6px;
-      display: block;
+      border-radius: 4px;
     }
     .nav-actions { display: flex; align-items: center; gap: 14px; }
     .nav-cta {
@@ -318,10 +311,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background-image: url('/hero-poster.jpg');
-      background-size: cover;
-      background-position: center 30%;
-      background-repeat: no-repeat;
     }
 
     .hero video {
@@ -331,7 +320,6 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      opacity: .55;
     }
 
     .hero::after {
@@ -339,8 +327,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 40%, rgba(5,7,12,.10) 0%, rgba(5,7,12,.55) 58%, rgba(5,7,12,.94) 100%),
-        linear-gradient(to bottom, rgba(5,7,12,.45) 0%, transparent 22%, transparent 68%, var(--bg) 100%);
+        radial-gradient(ellipse at 50% 45%, rgba(5,7,12,.20) 0%, rgba(5,7,12,.72) 62%, rgba(5,7,12,.96) 100%),
+        linear-gradient(to bottom, rgba(5,7,12,.50) 0%, transparent 25%, transparent 65%, var(--bg) 100%);
       z-index: 1;
     }
 
@@ -729,14 +717,10 @@
   <!-- NAV -->
   <nav class="site-nav">
     <a href="/" aria-label="AXONA home">
-      <img class="nav-logo" src="/logo-wordmark.png" alt="AXONA" width="1400" height="171">
+      <img class="nav-logo" src="/logo.webp" alt="AXONA" width="1024" height="1024">
     </a>
     <div class="nav-actions">
       <a class="nav-cta" href="https://distrokid.com/hyperfollow/axona/we-are-the-impulse-2" rel="noopener">Pre-save</a>
-      <picture>
-        <source srcset="/logo-emblem.webp" type="image/webp">
-        <img class="nav-avatar" src="/logo.png" alt="AXONA emblem" width="512" height="512" loading="lazy">
-      </picture>
     </div>
   </nav>
 
@@ -749,16 +733,13 @@
 
   <!-- HERO -->
   <header class="hero">
-    <video id="hero-video" autoplay muted loop playsinline preload="none" poster="/hero-poster.jpg" aria-label="AXONA lineup reveal video">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="/lineup-poster.jpg" aria-label="AXONA lineup reveal video">
       <source src="/lineup-reveal.webm" type="video/webm">
       <source src="/lineup-reveal.mp4" type="video/mp4">
     </video>
 
     <div class="hero-content">
-      <h1 class="brand-title">
-        <img src="/logo-wordmark.png" alt="AXONA" class="hero-wordmark"
-             width="1400" height="171" fetchpriority="high">
-      </h1>
+      <h1 class="sr-only">AXONA — We Are The Impulse</h1>
       <p class="track-title">We Are The Impulse</p>
 
       <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown to release">
@@ -786,7 +767,7 @@
 
       <div class="listen-block">
         <img class="listen-cover"
-             src="https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg"
+             src="https://media.weareaxona.com/axona/cover/cover-official-v3b.jpg"
              alt="AXONA — We Are The Impulse official cover artwork"
              loading="lazy" width="300" height="300">
         <div class="listen-info">
@@ -966,14 +947,23 @@
       setInterval(tick, 1000);
     })();
 
-    // ---------- HERO: poster-only (video lives in #reveal) ----------
+    // ---------- HERO VIDEO: autoplay, respects user preferences ----------
     (function () {
       const v = document.getElementById('hero-video');
       if (!v) return;
-      // Hero shows the official cover poster. The encoded video is
-      // played in the dedicated #reveal section instead, so we never
-      // pull 13 MB on first paint.
-      v.remove();
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const saveData = navigator.connection && navigator.connection.saveData;
+
+      if (reduce || saveData) {
+        v.removeAttribute('autoplay');
+        v.pause();
+        return;
+      }
+
+      const play = () => v.play().catch(() => {});
+      if (v.readyState >= 2) play();
+      else v.addEventListener('canplay', play, { once: true });
     })();
 
     // ---------- REVEAL VIDEO: lazy load on scroll ----------
