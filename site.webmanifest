@@ -1,0 +1,20 @@
+{
+  "name": "AXONA — We Are The Impulse",
+  "short_name": "AXONA",
+  "description": "Cyber-metalcore transmission terminal. We Are The Impulse — out 11.12.2026.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#05070c",
+  "theme_color": "#05070c",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["music", "entertainment"],
+  "icons": [
+    { "src": "/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/favicon-16x16.png", "sizes": "16x16", "type": "image/png" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
