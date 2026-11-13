@@ -11,4 +11,24 @@
       <image:title>AXONA — We Are The Impulse</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://weareaxona.com/press</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://weareaxona.com/press-assets/axona-cover-1500.jpg</image:loc>
+      <image:title>AXONA — We Are The Impulse cover artwork</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://weareaxona.com/press-assets/axona-press-01-1920.jpg</image:loc>
+      <image:title>AXONA press photo 01</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://weareaxona.com/privacy</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

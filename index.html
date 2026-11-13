@@ -15,7 +15,7 @@
   <!-- ==================== OPEN GRAPH ==================== -->
   <meta property="og:type" content="music.album">
   <meta property="og:title" content="AXONA — We Are The Impulse">
-  <meta property="og:description" content="Four decentralized vessels synchronized at 160 BPM. Cyber-metalcore. Out 11.12.2026.">
+  <meta property="og:description" content="Ignore the algorithm. Feed the machine. Four vessels, one signal. Cyber-metalcore. Out 11.12.2026.">
   <meta property="og:url" content="https://weareaxona.com/">
   <meta property="og:image" content="https://weareaxona.com/og-cover.jpg">
   <meta property="og:image:width" content="1200">
@@ -370,6 +370,30 @@
       border: 0;
     }
 
+    .hero-manifest {
+      font-family: var(--font-sans);
+      font-size: clamp(26px, 6.2vw, 58px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 18px;
+      text-shadow:
+        0 0 2px rgba(0,0,0,.95),
+        0 2px 8px rgba(0,0,0,.9),
+        0 6px 42px rgba(0,0,0,.85),
+        0 0 70px rgba(0,240,255,.30);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-manifest { animation: manifestIn .9s cubic-bezier(.16,.84,.3,1) both; }
+      @keyframes manifestIn {
+        from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+        to   { opacity: 1; transform: none; filter: none; }
+      }
+    }
+
     .track-title {
       font-family: var(--font-mono);
       font-size: clamp(13px, 2.9vw, 21px);
@@ -693,6 +717,22 @@
       transition: color .18s ease, border-color .18s ease;
     }
     .social-link:hover { color: var(--cyan); border-color: rgba(0,240,255,.5); }
+    .legal-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin: 18px 0 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .legal-row a { color: #6d7a8c; text-decoration: none; border-bottom: 1px solid transparent; }
+    .legal-row a:hover, .legal-row a:focus-visible { color: var(--cyan); border-bottom-color: var(--cyan); }
+    .legal-row span { color: #38424f; }
+
     .copyright {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -741,6 +781,7 @@
 
     <div class="hero-content">
       <h1 class="sr-only">AXONA — We Are The Impulse</h1>
+      <p class="hero-manifest">Ignore the algorithm.<br>Feed the machine.</p>
       <p class="track-title">We Are The Impulse</p>
 
       <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown to release">
@@ -764,7 +805,7 @@
     <div class="wrap">
       <p class="sec-title">// 01 — The Single</p>
       <h2 class="sec-head">We Are The Impulse</h2>
-      <p class="sec-sub">Four decentralized vessels synchronized at 160 BPM. Eight-string guitars, hydraulic percussion, modular synthesis.</p>
+      <p class="sec-sub">Four vessels. One signal. Eight-string guitars, hydraulic percussion, modular synthesis — built to be felt, not scrolled past.</p>
 
       <div class="listen-block">
         <img class="listen-cover"
@@ -905,6 +946,13 @@
       <a class="social-link" href="https://www.tiktok.com/@weareaxona" rel="noopener">TikTok</a>
       <a class="social-link" href="https://www.instagram.com/weareaxona" rel="noopener">Instagram</a>
       <a class="social-link" href="https://bsky.app/profile/weareaxona.bsky.social" rel="noopener">Bluesky</a>
+    </div>
+    <div class="legal-row">
+      <a href="/press">Press &amp; Booking</a>
+      <span aria-hidden="true">·</span>
+      <a href="/privacy">Privacy</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:contact@weareaxona.com">contact@weareaxona.com</a>
     </div>
     <p class="copyright">© 2026 AXONA. Decentralized Signal Collective. All rights reserved.</p>
   </footer>
