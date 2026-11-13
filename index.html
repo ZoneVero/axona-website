@@ -52,7 +52,8 @@
   <link rel="alternate" type="text/plain" href="/llms.txt" title="AXONA — machine-readable summary">
 
   <!-- ==================== PERFORMANCE ==================== -->
-  <link rel="preload" as="image" href="/lineup-poster.jpg">
+  <link rel="preload" as="image" href="/logo-wordmark.png">
+  <link rel="preload" as="image" href="/hero-poster.jpg" fetchpriority="high">
   <link rel="dns-prefetch" href="https://media.weareaxona.com">
   <link rel="preconnect" href="https://media.weareaxona.com" crossorigin>
 
@@ -69,8 +70,20 @@
         "description": "A next-generation cyber-metalcore and industrial electronic rock collective operating through four autonomous vessels: Synthex, Neura, Overclock and Glitch. Music built on eight-string guitars, modular synthesis and hydraulic industrial percussion.",
         "genre": ["Cyber Metalcore", "Industrial Metal", "Electronic Rock", "Modern Metalcore", "Djent"],
         "url": "https://weareaxona.com",
-        "logo": "https://weareaxona.com/logo.png",
-        "image": "https://weareaxona.com/og-cover.jpg",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://weareaxona.com/#logo",
+          "url": "https://weareaxona.com/logo.png",
+          "contentUrl": "https://weareaxona.com/logo.png",
+          "width": 512,
+          "height": 512,
+          "caption": "AXONA emblem"
+        },
+        "image": [
+          "https://weareaxona.com/og-cover.jpg",
+          "https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg",
+          "https://weareaxona.com/hero-poster.jpg"
+        ],
         "slogan": "We Are The Impulse",
         "foundingDate": "2026",
         "foundingLocation": {
@@ -130,7 +143,7 @@
         "datePublished": "2026-12-11",
         "genre": ["Cyber Metalcore", "Industrial Metal"],
         "image": "https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg",
-        "url": "https://weareaxona.com/",
+        "url": "https://weareaxona.com/#listen",
         "potentialAction": {
           "@type": "ListenAction",
           "target": "https://distrokid.com/hyperfollow/axona/we-are-the-impulse-2"
@@ -241,6 +254,45 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ---------- nav bar with official logo ---------- */
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px clamp(18px, 5vw, 48px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(5,7,12,.82);
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 15;
+    }
+    .nav-logo {
+      height: clamp(22px, 3.4vw, 30px);
+      width: auto;
+      display: block;
+    }
+    .nav-avatar {
+      height: clamp(30px, 4.4vw, 40px);
+      width: auto;
+      border-radius: 6px;
+      display: block;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-decoration: none;
+      border: 1px solid rgba(0,240,255,.4);
+      border-radius: 4px;
+      padding: 9px 16px;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .nav-cta:hover { background: rgba(0,240,255,.12); transform: translateY(-1px); }
+
     /* ---------- release banner ---------- */
     .release-banner {
       background: linear-gradient(90deg, var(--cyan), var(--magenta));
@@ -266,25 +318,29 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background-image: url('/hero-poster.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
     }
 
-    .hero video, .hero .poster {
+    .hero video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       z-index: 0;
+      opacity: .55;
     }
-    .hero .poster { display: none; }
 
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 45%, rgba(5,7,12,.25) 0%, rgba(5,7,12,.82) 62%, var(--bg) 100%),
-        linear-gradient(to bottom, rgba(5,7,12,.55) 0%, transparent 28%, transparent 62%, var(--bg) 100%);
+        radial-gradient(ellipse at 50% 40%, rgba(5,7,12,.10) 0%, rgba(5,7,12,.55) 58%, rgba(5,7,12,.94) 100%),
+        linear-gradient(to bottom, rgba(5,7,12,.45) 0%, transparent 22%, transparent 68%, var(--bg) 100%);
       z-index: 1;
     }
 
@@ -305,6 +361,24 @@
       color: #fff;
       text-shadow: 0 0 60px rgba(0,240,255,.34), 0 0 130px rgba(0,240,255,.16);
       margin-bottom: 20px;
+    }
+
+    .hero-wordmark {
+      width: clamp(280px, 74vw, 720px);
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+      filter: drop-shadow(0 0 42px rgba(0,240,255,.42)) drop-shadow(0 0 92px rgba(0,240,255,.18));
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .track-title {
@@ -519,6 +593,23 @@
       line-height: 1.65;
     }
 
+    /* ---------- video frame ---------- */
+    .video-frame {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,240,255,.18);
+      box-shadow: 0 18px 60px rgba(0,0,0,.6);
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
     /* ---------- signal / email ---------- */
     .portal {
       background: linear-gradient(160deg, rgba(11,15,25,.95), rgba(5,7,12,.95));
@@ -635,6 +726,20 @@
 </head>
 <body>
 
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="/" aria-label="AXONA home">
+      <img class="nav-logo" src="/logo-wordmark.png" alt="AXONA" width="1400" height="171">
+    </a>
+    <div class="nav-actions">
+      <a class="nav-cta" href="https://distrokid.com/hyperfollow/axona/we-are-the-impulse-2" rel="noopener">Pre-save</a>
+      <picture>
+        <source srcset="/logo-emblem.webp" type="image/webp">
+        <img class="nav-avatar" src="/logo.png" alt="AXONA emblem" width="512" height="512" loading="lazy">
+      </picture>
+    </div>
+  </nav>
+
   <!-- RELEASE BANNER -->
   <div class="release-banner">
     <a href="https://distrokid.com/hyperfollow/axona/we-are-the-impulse-2" rel="noopener">
@@ -644,13 +749,16 @@
 
   <!-- HERO -->
   <header class="hero">
-    <video id="hero-video" autoplay muted loop playsinline preload="none" poster="/lineup-poster.jpg" aria-label="AXONA lineup reveal video">
+    <video id="hero-video" autoplay muted loop playsinline preload="none" poster="/hero-poster.jpg" aria-label="AXONA lineup reveal video">
       <source src="/lineup-reveal.webm" type="video/webm">
       <source src="/lineup-reveal.mp4" type="video/mp4">
     </video>
 
     <div class="hero-content">
-      <h1 class="brand-title">AXONA</h1>
+      <h1 class="brand-title">
+        <img src="/logo-wordmark.png" alt="AXONA" class="hero-wordmark"
+             width="1400" height="171" fetchpriority="high">
+      </h1>
       <p class="track-title">We Are The Impulse</p>
 
       <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown to release">
@@ -679,7 +787,7 @@
       <div class="listen-block">
         <img class="listen-cover"
              src="https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg"
-             alt="AXONA — We Are The Impulse album cover"
+             alt="AXONA — We Are The Impulse official cover artwork"
              loading="lazy" width="300" height="300">
         <div class="listen-info">
           <h3>We Are The Impulse</h3>
@@ -705,7 +813,6 @@
       <p class="sec-title">// 02 — The Collective</p>
       <h2 class="sec-head">Four vessels. One signal.</h2>
       <p class="sec-sub">AXONA is not a band in the traditional sense. It is four autonomous identities operating as a single transmission.</p>
-
       <div class="vessels-grid">
         <article class="vessel-card" id="synthex">
           <p class="vessel-num">Vessel 01</p>
@@ -738,11 +845,33 @@
     </div>
   </section>
 
+  <!-- LINEUP REVEAL VIDEO -->
+  <section id="reveal">
+    <div class="wrap">
+      <p class="sec-title">// 03 — Transmission</p>
+      <h2 class="sec-head">The lineup reveal</h2>
+      <p class="sec-sub">Forty seconds. Four vessels assembling for the first time.</p>
+
+      <div class="video-frame">
+        <video id="reveal-video" controls playsinline preload="none" poster="/lineup-poster.jpg"
+               aria-label="AXONA official lineup reveal, 40 seconds">
+          <source src="/lineup-reveal.webm" type="video/webm">
+          <source src="/lineup-reveal.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="cta-row" style="justify-content:flex-start;margin-top:26px">
+        <a class="btn btn-ghost" href="https://distrokid.com/videos/watch/dv-hH28Li1Sa" rel="noopener">Watch the official video</a>
+      </div>
+    </div>
+  </section>
+
   <!-- SIGNAL / EMAIL -->
   <section id="signal">
     <div class="wrap">
       <div class="portal">
-        <p class="sec-title" style="text-align:center">// 03 — Intercept</p>
+        <p class="sec-title" style="text-align:center">// 04 — Intercept</p>
         <h2 class="sec-head" style="font-size:clamp(22px,4.4vw,32px)">Intercept the master signal</h2>
         <p class="sec-sub" style="text-align:center;margin:0 auto 0">
           Join the transmission. Get the release alert, unreleased fragments and encrypted dossiers before global streaming distribution.
@@ -762,7 +891,7 @@
   <!-- FAQ -->
   <section id="faq">
     <div class="wrap" style="max-width:760px">
-      <p class="sec-title">// 04 — Transmission Log</p>
+      <p class="sec-title">// 05 — Transmission Log</p>
       <h2 class="sec-head">Frequently asked</h2>
 
       <div class="faq-item">
@@ -837,23 +966,31 @@
       setInterval(tick, 1000);
     })();
 
-    // ---------- HERO VIDEO: lazy load ----------
+    // ---------- HERO: poster-only (video lives in #reveal) ----------
     (function () {
       const v = document.getElementById('hero-video');
       if (!v) return;
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const saveData = navigator.connection && navigator.connection.saveData;
+      // Hero shows the official cover poster. The encoded video is
+      // played in the dedicated #reveal section instead, so we never
+      // pull 13 MB on first paint.
+      v.remove();
+    })();
 
-      if (reduce || saveData) {
-        v.removeAttribute('autoplay');
-        v.pause();
-        return;
-      }
+    // ---------- REVEAL VIDEO: lazy load on scroll ----------
+    (function () {
+      const v = document.getElementById('reveal-video');
+      if (!v) return;
+      if (!('IntersectionObserver' in window)) { v.preload = 'metadata'; return; }
 
-      // only start downloading once the page is idle
-      const start = () => { v.preload = 'auto'; v.load(); v.play().catch(() => {}); };
-      if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2500 });
-      else setTimeout(start, 1200);
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            v.preload = 'metadata';
+            io.disconnect();
+          }
+        });
+      }, { rootMargin: '300px' });
+      io.observe(v);
     })();
 
     // ---------- EMAIL FORM ----------
