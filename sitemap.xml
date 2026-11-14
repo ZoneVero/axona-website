@@ -45,6 +45,16 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://weareaxona.com/protocol/</loc>
+      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/protocol/"/>
+      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/protocol/"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/protocol/"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/protocol/"/>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://weareaxona.com/synthex/</loc>
       <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/synthex/"/>
       <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/synthex/"/>
