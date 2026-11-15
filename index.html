@@ -724,6 +724,19 @@
     }
     .portal-btn:hover:not(:disabled) { transform: translateY(-2px); }
     .portal-btn:disabled { opacity: .55; cursor: wait; }
+    .portal-consent {
+      max-width: 560px; margin: 12px auto 0; text-align: left;
+      font-size: 12px; line-height: 1.55; color: #8b98a8;
+    }
+    .portal-consent label {
+      display: flex; gap: 9px; align-items: flex-start; cursor: pointer;
+    }
+    .portal-consent input[type="checkbox"] {
+      flex: 0 0 auto; width: 15px; height: 15px; margin-top: 2px;
+      accent-color: var(--cyan); cursor: pointer;
+    }
+    .portal-consent a { color: var(--cyan); text-decoration: underline; }
+    .portal-consent input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
     .status-alert {
       margin-top: 16px;
       font-family: var(--font-mono);
@@ -1030,6 +1043,14 @@
                  aria-label="Your email address">
           <button class="portal-btn" type="submit" id="submit-btn">Decode</button>
         </form>
+        <p class="portal-consent" id="portal-consent">
+          <label for="consent-check">
+            <input type="checkbox" id="consent-check" required>
+            <span>I agree to receive occasional emails about AXONA releases. No
+            sharing, no selling — unsubscribe in one click. See the
+            <a href="/privacy/">privacy policy</a>.</span>
+          </label>
+        </p>
         <div class="status-alert" id="status-message" role="status" aria-live="polite"></div>
       </div>
     </div>
@@ -1172,18 +1193,30 @@
 
     // ---------- EMAIL FORM ----------
     (function () {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdd2oqqjTbEPv_nTRj2s4Mw6NhAXvgcBHZ-D21cHm7TuJ7g1WhC2aJM8ILXr3sTS5z/exec';
+
       const form = document.getElementById('frequency-form');
       const input = document.getElementById('email-input');
       const btn = document.getElementById('submit-btn');
       const msg = document.getElementById('status-message');
+      const consent = document.getElementById('consent-check');
+
+      // Double opt-in endpoint. Until the tunnel route exists this points at
+      // the same origin path the Worker will serve; swap the host when the
+      // subscribe.weareaxona.com route goes live.
+      const SUBSCRIBE_URL = 'https://subscribe.weareaxona.com/subscribe';
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         const email = input.value.trim();
+
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
           msg.style.color = 'var(--magenta)';
           msg.textContent = 'INVALID ADDRESS // CHECK AND RETRY.';
+          return;
+        }
+        if (!consent.checked) {
+          msg.style.color = 'var(--magenta)';
+          msg.textContent = 'CONSENT REQUIRED // TICK THE BOX TO CONTINUE.';
           return;
         }
 
@@ -1192,20 +1225,30 @@
         msg.style.color = 'var(--cyan)';
         msg.textContent = 'ESTABLISHING FREQUENCY...';
 
-        const fd = new FormData();
-        fd.append('email', email);
-
-        fetch(SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' })
-          .then(() => {
-            msg.style.color = 'var(--cyan)';
-            msg.textContent = 'SIGNAL CONFIRMED // ACCESS GRANTED.';
-            form.reset();
+        fetch(SUBSCRIBE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        })
+          .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+          .then(function (data) {
+            if (data && data.ok) {
+              // Honest copy: nothing is subscribed until the link is clicked.
+              msg.style.color = 'var(--cyan)';
+              msg.textContent = 'CHECK YOUR INBOX // CONFIRM THE LINK TO ACTIVATE.';
+              form.reset();
+            } else {
+              msg.style.color = 'var(--magenta)';
+              msg.textContent = (data && data.error)
+                ? String(data.error).toUpperCase()
+                : 'TRANSMISSION FAILED // RETRY LATER.';
+            }
           })
-          .catch(() => {
+          .catch(function () {
             msg.style.color = 'var(--magenta)';
             msg.textContent = 'TRANSMISSION FAILED // RETRY LATER.';
           })
-          .finally(() => {
+          .finally(function () {
             btn.disabled = false;
             btn.textContent = 'Decode';
           });
