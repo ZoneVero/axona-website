@@ -1212,9 +1212,6 @@
       const msg = document.getElementById('status-message');
       const consent = document.getElementById('consent-check');
 
-      // Double opt-in endpoint. Until the tunnel route exists this points at
-      // the same origin path the Worker will serve; swap the host when the
-      // subscribe.weareaxona.com route goes live.
       const SUBSCRIBE_URL = 'https://subscribe.weareaxona.com/subscribe';
 
       form.addEventListener('submit', function (e) {

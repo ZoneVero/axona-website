@@ -1,0 +1,8 @@
+_worker.js
+worker/
+node_modules/
+.git/
+wrangler.jsonc
+_headers
+_redirects
+*.md
