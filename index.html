@@ -309,6 +309,21 @@
       transition: background .18s ease, transform .18s ease;
     }
     .nav-cta:hover { background: rgba(0,240,255,.12); transform: translateY(-1px); }
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8b98a8;
+      text-decoration: none;
+      padding: 9px 2px;
+      transition: color .18s ease;
+    }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--cyan); }
+    @media (max-width: 560px) {
+      .nav-link { display: none; }
+    }
 
     /* ---------- release banner ---------- */
     .release-banner {
@@ -790,6 +805,46 @@
       html { scroll-behavior: auto; }
       .btn, .vessel-card, .social-link { transition: none; }
     }
+
+    /* ---- hero audio preview ---- */
+    .hero-audio {
+      margin-top: 26px;
+      display: flex; align-items: center; gap: 14px;
+      max-width: 380px; width: 100%;
+      padding: 10px 16px 10px 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+    .ha-btn {
+      flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(0,240,255,.45); background: rgba(0,240,255,.1);
+      color: #00f0ff; cursor: pointer; display: grid; place-items: center;
+      transition: background .15s, border-color .15s;
+    }
+    .ha-btn:hover, .ha-btn:focus-visible { background: rgba(0,240,255,.22); border-color: #00f0ff; }
+    .ha-btn:focus-visible { outline: 2px solid #00f0ff; outline-offset: 3px; }
+    .ha-icon { width: 18px; height: 18px; fill: currentColor; display: none; }
+    .ha-icon.ha-play { display: block; margin-left: 2px; }
+    .hero-audio.playing .ha-play { display: none; }
+    .hero-audio.playing .ha-pause { display: block; }
+    .ha-body { flex: 1 1 auto; min-width: 0; }
+    .ha-meta {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em;
+      text-transform: uppercase; color: #8b98a8; margin-bottom: 6px;
+    }
+    .ha-time { color: #5c6876; letter-spacing: .06em; }
+    .ha-track {
+      height: 3px; border-radius: 999px; background: rgba(255,255,255,.12);
+      cursor: pointer; overflow: hidden;
+    }
+    .ha-track:focus-visible { outline: 2px solid #00f0ff; outline-offset: 4px; }
+    .ha-fill { height: 100%; width: 0; background: #00f0ff; border-radius: 999px; }
+    @media (max-width: 520px) {
+      .hero-audio { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -800,6 +855,8 @@
       <img class="nav-logo" src="/logo.webp" alt="AXONA" width="512" height="512">
     </a>
     <div class="nav-actions">
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-link" href="/press/">Press</a>
       <a class="nav-cta" href="https://distrokid.com/hyperfollow/axona/we-are-the-impulse-2" rel="noopener">Pre-save</a>
     </div>
   </nav>
@@ -835,6 +892,26 @@
           Pre-save the single
         </a>
         <a class="btn btn-ghost" href="#vessels">Meet the vessels</a>
+      </div>
+
+      <div class="hero-audio" id="hero-audio">
+        <button class="ha-btn" id="ha-toggle" type="button"
+                aria-label="Play a 45 second preview of We Are The Impulse">
+          <svg class="ha-icon ha-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="ha-icon ha-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <div class="ha-body">
+          <div class="ha-meta">
+            <span class="ha-label">45-second preview</span>
+            <span class="ha-time" id="ha-time">0:00 / 0:45</span>
+          </div>
+          <div class="ha-track" id="ha-track" role="slider" tabindex="0"
+               aria-label="Preview progress" aria-valuemin="0" aria-valuemax="45" aria-valuenow="0">
+            <div class="ha-fill" id="ha-fill"></div>
+          </div>
+        </div>
+        <audio id="ha-audio" preload="none"
+               src="https://media.weareaxona.com/axona/audio/impulse/preview/axona-we-are-the-impulse-45s-preview.mp3"></audio>
       </div>
     </div>
   </header>
@@ -1134,6 +1211,68 @@
           });
       });
     })();
+  </script>
+
+  <script>
+  (function () {
+    var wrap = document.getElementById('hero-audio');
+    if (!wrap) return;
+    var audio = document.getElementById('ha-audio');
+    var toggle = document.getElementById('ha-toggle');
+    var track = document.getElementById('ha-track');
+    var fill = document.getElementById('ha-fill');
+    var timeEl = document.getElementById('ha-time');
+
+    function fmt(s) {
+      if (!isFinite(s) || s < 0) s = 0;
+      var m = Math.floor(s / 60), r = Math.floor(s % 60);
+      return m + ':' + (r < 10 ? '0' : '') + r;
+    }
+
+    function paint() {
+      var dur = audio.duration || 45;
+      var pct = dur ? (audio.currentTime / dur) * 100 : 0;
+      fill.style.width = pct + '%';
+      timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(dur);
+      track.setAttribute('aria-valuenow', Math.round(audio.currentTime));
+      track.setAttribute('aria-valuemax', Math.round(dur));
+    }
+
+    toggle.addEventListener('click', function () {
+      if (audio.paused) {
+        audio.play().catch(function () { /* autoplay policy — user gesture covers this */ });
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', function () { wrap.classList.add('playing'); });
+    audio.addEventListener('pause', function () { wrap.classList.remove('playing'); });
+    audio.addEventListener('timeupdate', paint);
+    audio.addEventListener('loadedmetadata', paint);
+    audio.addEventListener('ended', function () {
+      wrap.classList.remove('playing');
+      audio.currentTime = 0;
+      paint();
+    });
+
+    function seek(e) {
+      var rect = track.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      var pct = Math.min(1, Math.max(0, x / rect.width));
+      var dur = audio.duration || 45;
+      audio.currentTime = pct * dur;
+      paint();
+    }
+
+    track.addEventListener('click', seek);
+    track.addEventListener('keydown', function (e) {
+      var step = 5;
+      if (e.key === 'ArrowRight') { audio.currentTime = Math.min((audio.duration || 45), audio.currentTime + step); paint(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { audio.currentTime = Math.max(0, audio.currentTime - step); paint(); e.preventDefault(); }
+      if (e.key === ' ' || e.key === 'Enter') { toggle.click(); e.preventDefault(); }
+    });
+  })();
   </script>
 
 </body>
