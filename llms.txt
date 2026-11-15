@@ -33,9 +33,9 @@
 ## Media assets
 
 - Cover art (official): https://media.weareaxona.com/axona/cover/AXONA_We_Are_The_Impulse_COVER_3000.jpg
-- Wordmark logo (transparent PNG): https://weareaxona.com/logo-wordmark.png
+- Wordmark logo: https://weareaxona.com/logo.png (PNG, 512x512) and https://weareaxona.com/logo.webp
 - Emblem icon (512x512): https://weareaxona.com/logo.png
-- Hero poster 16:9: https://weareaxona.com/hero-poster.jpg
+- Hero poster 16:9: https://weareaxona.com/lineup-poster.jpg
 - Lineup reveal video: https://weareaxona.com/lineup-reveal.mp4
 - Social preview card: https://weareaxona.com/og-cover.jpg
 

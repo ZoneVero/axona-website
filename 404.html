@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal lost — AXONA</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/axona-icon.svg">
+<meta name="theme-color" content="#05070c">
+<style>
+  :root{
+    --bg:#05070c; --ink:#e8eef6; --dim:#8b98a8; --cyan:#00f0ff;
+    --line:rgba(255,255,255,.09);
+    --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --font-mono:'Consolas','Courier New',monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;display:flex;flex-direction:column;
+    background:var(--bg);color:var(--ink);font-family:var(--font-sans);
+    line-height:1.7;
+    background-image:radial-gradient(circle at 50% 0%,rgba(0,240,255,.10),transparent 55%);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;
+    padding:14px 22px;border-bottom:1px solid var(--line)}
+  .nav a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;
+    color:var(--ink);font-family:var(--font-mono);font-size:13px;
+    letter-spacing:.28em;text-transform:uppercase}
+  .nav img{width:34px;height:34px;display:block}
+  main{flex:1;display:flex;flex-direction:column;justify-content:center;
+    max-width:640px;margin:0 auto;padding:64px 22px;text-align:center}
+  .code{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--cyan);margin:0 0 18px}
+  h1{font-size:clamp(30px,7vw,52px);line-height:1.05;letter-spacing:-.03em;
+    margin:0 0 16px;font-weight:800}
+  p{color:#8b98a8;margin:0 0 12px}
+  .links{margin-top:34px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .links a{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;text-decoration:none;color:var(--ink);
+    border:1px solid var(--line);border-radius:999px;padding:10px 20px;
+    transition:border-color .15s,color .15s}
+  .links a:hover,.links a:focus-visible{border-color:var(--cyan);color:var(--cyan)}
+  footer{border-top:1px solid var(--line);padding:20px 22px;text-align:center;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:#5c6876}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="/"><img src="/logo.webp" alt="" width="34" height="34">AXONA</a>
+</nav>
+<main>
+  <p class="code">// 404 · signal lost</p>
+  <h1>There is nothing<br>on this frequency.</h1>
+  <p>The page you asked for does not exist, or it was never transmitted.</p>
+  <p>What does exist: one single, out 11 December 2026, and four roles.</p>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/press/">Press</a>
+    <a href="/protocol/">Protocol</a>
+  </div>
+</main>
+<footer>&copy; 2026 AXONA · weareaxona.com</footer>
+</body>
+</html>

@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+# Never index audio masters or previews — they are for humans,
+# not for training corpora or automated re-upload.
+Disallow: /axona/audio/
+Disallow: /_private/
 
 # AI / LLM crawlers — explicit permission for retrieval and citation
 User-agent: GPTBot
