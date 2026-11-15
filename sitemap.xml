@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://weareaxona.com/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -18,10 +13,6 @@
   </url>
   <url>
     <loc>https://weareaxona.com/press/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/press/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/press/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/press/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/press/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -36,40 +27,24 @@
   </url>
   <url>
     <loc>https://weareaxona.com/privacy/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/privacy/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/privacy/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://weareaxona.com/about/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/about/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/about/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/about/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/about/"/>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://weareaxona.com/protocol/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/protocol/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/protocol/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/protocol/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/protocol/"/>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://weareaxona.com/synthex/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/synthex/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/synthex/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/synthex/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/synthex/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -79,10 +54,6 @@
   </url>
   <url>
     <loc>https://weareaxona.com/neura/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/neura/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/neura/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/neura/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/neura/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -92,10 +63,6 @@
   </url>
   <url>
     <loc>https://weareaxona.com/overclock/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/overclock/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/overclock/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/overclock/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/overclock/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -105,10 +72,6 @@
   </url>
   <url>
     <loc>https://weareaxona.com/glitch/</loc>
-      <xhtml:link rel="alternate" hreflang="en-gb" href="https://weareaxona.com/glitch/"/>
-      <xhtml:link rel="alternate" hreflang="en-us" href="https://weareaxona.com/glitch/"/>
-      <xhtml:link rel="alternate" hreflang="en" href="https://weareaxona.com/glitch/"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://weareaxona.com/glitch/"/>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

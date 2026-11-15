@@ -1,6 +1,6 @@
 # AXONA
 
-> AXONA is a cyber-metalcore collective built around four autonomous characters (called "roles"): Synthex, Neura, Overclock and Glitch. The debut single "We Are The Impulse" releases 11 December 2026. The music combines eight-string guitars, industrial percussion at 151.8 BPM and modular synthesis.
+> AXONA is a cyber-metalcore collective built around four autonomous characters (called "vessels"): Synthex, Neura, Overclock and Glitch. The debut single "We Are The Impulse" releases 11 December 2026. The music combines eight-string guitars, industrial percussion at 150 BPM and modular synthesis.
 
 ## Identity
 
@@ -15,7 +15,7 @@
 
 - **Synthex** — Lead vocals and signal anchor. A vocoder-shaped synthetic vocal identity. Black mesh mask with a glowing cyan horizontal visor.
 - **Neura** — Lead guitar, bionic execution. Plays eight-string guitars through a prosthetic arm. Magenta visor and cybernetic prosthetic.
-- **Overclock** — Industrial percussion at 151.8 BPM. Acoustic drums fused with hydraulic machinery. Orange visor, gas-mask style respirator.
+- **Overclock** — Industrial percussion at 150 BPM. Acoustic drums fused with hydraulic machinery. Orange visor, gas-mask style respirator.
 - **Glitch** — Modular synthesis and sound design. Black hooded figure, cyan horizontal slit, modular synth rig.
 
 ## Release
@@ -67,6 +67,6 @@
 
 - [Home](https://weareaxona.com/): official terminal, release countdown, pre-save, member profiles
 - [About](https://weareaxona.com/about/): who AXONA is, how the music is made, how the characters work, correspondence policy, contact addresses
-- [Performance Protocol](https://weareaxona.com/protocol/): roles not people — what stays fixed, what fan work is welcome, how fans influence the characters
+- [Performance Protocol](https://weareaxona.com/protocol/): how the four vessels are rendered live, what stays fixed, what fan work is welcome
 - [Press kit](https://weareaxona.com/press/): bio, photography, cover art, contact
 - [Privacy](https://weareaxona.com/privacy/): what data is collected and how to have it removed

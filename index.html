@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ==================== CORE SEO ==================== -->
-  <title>AXONA — We Are The Impulse | Cyber-Metalcore | Out 11.12.2026</title>
+  <title>AXONA — We Are The Impulse | Cyber-Metalcore, Out 11.12.2026</title>
   <meta name="description" content="AXONA is a four-vessel cyber-metalcore collective. 'We Are The Impulse' releases 11 December 2026. Pre-save now, watch the lineup reveal, intercept the master signal.">
   <meta name="keywords" content="AXONA, We Are The Impulse, cyber metalcore, industrial metal, electronic rock, Synthex, Neura, Overclock, Glitch, djent, techwear, new metal band 2026">
   <meta name="author" content="AXONA">
@@ -119,7 +119,7 @@
             "name": "Overclock",
             "alternateName": "Vessel 03",
             "jobTitle": "Industrial Percussion",
-            "description": "Overclock drives AXONA's industrial percussion engine at 160 BPM, blending acoustic drums with hydraulic machinery.",
+            "description": "Overclock drives AXONA's industrial percussion engine at 150 BPM, blending acoustic drums with hydraulic machinery.",
             "memberOf": { "@id": "https://weareaxona.com/#musicgroup" }
           },
           {
@@ -217,7 +217,7 @@
             "name": "Who are the members of AXONA?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AXONA has four members: Synthex on lead vocals and signal anchor, Neura on lead guitar and bionic execution, Overclock on industrial percussion at 160 BPM, and Glitch on modular synthesizers and sound design."
+              "text": "AXONA has four members: Synthex on lead vocals and signal anchor, Neura on lead guitar and bionic execution, Overclock on industrial percussion at 150 BPM, and Glitch on modular synthesizers and sound design."
             }
           },
           {
@@ -406,6 +406,20 @@
       clip: rect(0,0,0,0);
       white-space: nowrap;
       border: 0;
+    }
+    /* The h1 is the page's real title: it must be visible to search engines
+       and to anyone landing mid-page from a share link, but the hero already
+       carries the manifest and track name typographically. Set it as a small
+       uppercase eyebrow above the manifest — present in the DOM and on screen
+       without competing with the poster art. */
+    .hero-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: #00f0ff;
+      margin: 0 0 14px;
+      opacity: .92;
     }
 
     .skip-link {
@@ -901,13 +915,13 @@
 
   <!-- HERO -->
   <header class="hero">
-    <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="/lineup-poster.jpg" aria-label="AXONA lineup reveal video" width="1280" height="720">
+    <video id="hero-video" autoplay muted loop playsinline preload="none" poster="/lineup-poster.jpg" aria-label="AXONA lineup reveal video" width="1280" height="720">
       <source src="/lineup-reveal.webm" type="video/webm">
       <source src="/lineup-reveal.mp4" type="video/mp4">
     </video>
 
     <div class="hero-content">
-      <h1 class="sr-only">AXONA — We Are The Impulse</h1>
+      <h1 class="hero-title">AXONA — We Are The Impulse</h1>
       <p class="hero-manifest">Ignore the algorithm.<br>Feed the machine.</p>
       <p class="track-title">We Are The Impulse</p>
 
@@ -1005,8 +1019,8 @@
         <article class="vessel-card" id="overclock">
           <p class="vessel-num">Vessel 03</p>
           <h3 class="vessel-name">OVERCLOCK</h3>
-          <p class="vessel-role">Industrial Percussion · 160 BPM</p>
-          <p class="vessel-desc">The engine room. Acoustic drums fused with hydraulic machinery, driving a relentless 160 BPM pulse that defines the AXONA tempo.</p>
+          <p class="vessel-role">Industrial Percussion · 150 BPM</p>
+          <p class="vessel-desc">The engine room. Acoustic drums fused with hydraulic machinery, driving a relentless 150 BPM pulse that defines the AXONA tempo.</p>
         
           <a class="vessel-more" href="/overclock/">&rarr; READ FILE</a>
         </article>
@@ -1087,32 +1101,32 @@
       <h2 class="sec-head">Frequently asked</h2>
 
       <div class="faq-item">
-        <p class="faq-q">Who is AXONA?</p>
+        <h3 class="faq-q">Who is AXONA?</h3>
         <p class="faq-a">AXONA is a cyber-metalcore collective built around four autonomous characters — Synthex on vocals, Neura on guitar, Overclock on drums and Glitch on modular synthesis. The music combines eight-string guitars, industrial percussion and modular synthesis.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-q">When does “We Are The Impulse” release?</p>
+        <h3 class="faq-q">When does “We Are The Impulse” release?</h3>
         <p class="faq-a">11 December 2026, across all major streaming platforms including Spotify, Apple Music, YouTube Music and TikTok.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-q">Who are the members of AXONA?</p>
-        <p class="faq-a">Four: Synthex (lead vocals, signal anchor), Neura (lead guitar, bionic execution), Overclock (industrial percussion at 160 BPM) and Glitch (modular synthesizers, sound design).</p>
+        <h3 class="faq-q">Who are the members of AXONA?</h3>
+        <p class="faq-a">Four: Synthex (lead vocals, signal anchor), Neura (lead guitar, bionic execution), Overclock (industrial percussion at 150 BPM) and Glitch (modular synthesizers, sound design).</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-q">What genre is AXONA?</p>
+        <h3 class="faq-q">What genre is AXONA?</h3>
         <p class="faq-a">Cyber-metalcore, sitting at the intersection of industrial metal, electronic rock and djent.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-q">Who performs the characters live?</p>
+        <h3 class="faq-q">Who performs the characters live?</h3>
         <p class="faq-a">AXONA is a character-based performance project. Synthex, Neura, Overclock and Glitch are roles within the AXONA world, embodied by authorized performers. The characters and their visual codes remain continuous; the cast may evolve by territory, production and era.</p>
       </div>
 
       <div class="faq-item">
-        <p class="faq-q">Does the cast change affect the music?</p>
+        <h3 class="faq-q">Does the cast change affect the music?</h3>
         <p class="faq-a">No. The voice you hear on the records is the voice. Songwriting, production and vocal identity are fixed in the recordings. A live performer interprets a role — they do not redefine it.</p>
       </div>
     </div>
@@ -1194,8 +1208,23 @@
       }
 
       const play = () => v.play().catch(() => {});
-      if (v.readyState >= 2) play();
-      else v.addEventListener('canplay', play, { once: true });
+
+      // preload="none" keeps the 13 MB video out of the critical path, so the
+      // poster paints immediately. We then kick off loading once the page is
+      // past its first paint — the hero still animates, but LCP is the poster.
+      const start = () => {
+        v.preload = 'auto';
+        v.load();
+        if (v.readyState >= 2) play();
+        else v.addEventListener('canplay', play, { once: true });
+      };
+
+      if (document.readyState === 'complete') {
+        // Defer past the current task so the poster is painted first.
+        setTimeout(start, 200);
+      } else {
+        window.addEventListener('load', () => setTimeout(start, 200), { once: true });
+      }
     })();
 
     // ---------- REVEAL VIDEO: lazy load on scroll ----------
