@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Subscribe diagnostic — AXONA</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px;background:#05070c;color:#e8eef6;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.6}
+  h1{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#00f0ff;margin:0 0 6px}
+  p.sub{color:#6d7a8c;margin:0 0 24px;font-size:12px}
+  .row{background:#0a0e16;border:1px solid #1a2432;border-radius:5px;padding:14px 16px;margin-bottom:12px}
+  .k{color:#6d7a8c;font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+  .v{color:#e8eef6;word-break:break-all}
+  .ok{color:#00f0ff}
+  .bad{color:#ff2d78}
+  .warn{color:#ffb300}
+  pre{margin:8px 0 0;white-space:pre-wrap;word-break:break-all;color:#9aa8b8;font-size:11px}
+  button{background:#00f0ff;color:#05070c;border:0;padding:12px 24px;border-radius:4px;
+    font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;cursor:pointer;margin-bottom:20px}
+  button:disabled{opacity:.5;cursor:wait}
+</style>
+</head>
+<body>
+<h1>Subscribe diagnostic</h1>
+<p class="sub">Rulează testele de mai jos și trimite-mi rezultatul.</p>
+
+<button id="run">Run diagnostics</button>
+<div id="out"></div>
+
+<script>
+const out = document.getElementById('out');
+
+function row(k, v, cls) {
+  const d = document.createElement('div');
+  d.className = 'row';
+  d.innerHTML = `<div class="k">${k}</div><div class="v ${cls || ''}">${v}</div>`;
+  out.appendChild(d);
+  return d;
+}
+
+function rowPre(k, obj) {
+  const d = document.createElement('div');
+  d.className = 'row';
+  d.innerHTML = `<div class="k">${k}</div><pre>${JSON.stringify(obj, null, 2)}</pre>`;
+  out.appendChild(d);
+}
+
+document.getElementById('run').addEventListener('click', async () => {
+  out.innerHTML = '';
+  document.getElementById('run').disabled = true;
+
+  // 1. origin + user agent
+  row('Page origin', location.origin);
+  row('User agent', navigator.userAgent);
+  row('Online', navigator.onLine ? 'yes' : 'NO', navigator.onLine ? 'ok' : 'bad');
+
+  // 2. DNS / reachability — plain GET
+  try {
+    const t0 = performance.now();
+    const r = await fetch('https://subscribe.weareaxona.com/health', { cache: 'no-store' });
+    const ms = Math.round(performance.now() - t0);
+    const body = await r.json().catch(() => null);
+    row('GET /health (plain)', `HTTP ${r.status} in ${ms}ms — ${JSON.stringify(body)}`, 'ok');
+  } catch (e) {
+    row('GET /health (plain)', `FAILED: ${e.name} — ${e.message}`, 'bad');
+  }
+
+  // 3. GET with Origin header (simple request, no preflight)
+  try {
+    const r = await fetch('https://subscribe.weareaxona.com/health', {
+      cache: 'no-store',
+      headers: { 'X-Probe': '1' },
+      mode: 'cors',
+    });
+    row('GET /health (cors mode + custom header)', `HTTP ${r.status}`, r.ok ? 'ok' : 'bad');
+  } catch (e) {
+    row('GET /health (cors mode + custom header)', `FAILED: ${e.name} — ${e.message}`, 'bad');
+  }
+
+  // 4. preflight
+  try {
+    const r = await fetch('https://subscribe.weareaxona.com/subscribe', {
+      method: 'OPTIONS',
+      headers: {
+        'Access-Control-Request-Method': 'POST',
+        'Access-Control-Request-Headers': 'content-type',
+      },
+    });
+    row('OPTIONS /subscribe (preflight)', `HTTP ${r.status}`, r.ok ? 'ok' : 'warn');
+  } catch (e) {
+    row('OPTIONS /subscribe (preflight)', `FAILED: ${e.name} — ${e.message}`, 'bad');
+  }
+
+  // 5. the real POST
+  try {
+    const t0 = performance.now();
+    const r = await fetch('https://subscribe.weareaxona.com/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'diag@example.com' }),
+    });
+    const ms = Math.round(performance.now() - t0);
+    const text = await r.text();
+    row('POST /subscribe', `HTTP ${r.status} in ${ms}ms`, r.ok ? 'ok' : 'bad');
+    rowPre('response body', text.slice(0, 400));
+    rowPre('response headers (CORS visible)',
+      ['access-control-allow-origin', 'content-type', 'cache-control']
+        .map(h => h + ': ' + (r.headers.get(h) || '(absent)')));
+  } catch (e) {
+    row('POST /subscribe', `FAILED: ${e.name} — ${e.message}`, 'bad');
+  }
+
+  // 6. browser-level facts
+  rowPre('context', {
+    cookiesEnabled: navigator.cookieEnabled,
+    doNotTrack: navigator.doNotTrack,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    language: navigator.language,
+    secureContext: window.isSecureContext,
+    serviceWorker: 'serviceWorker' in navigator,
+  });
+
+  document.getElementById('run').disabled = false;
+  row('Done', 'Copy everything above and send it to me.', 'ok');
+});
+</script>
+</body>
+</html>
