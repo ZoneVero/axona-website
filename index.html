@@ -408,6 +408,16 @@
       border: 0;
     }
 
+    .skip-link {
+      position: absolute; left: 12px; top: -60px; z-index: 9999;
+      background: var(--cyan); color: #05070c;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 12px 20px; border-radius: 4px; text-decoration: none;
+      transition: top .15s ease;
+    }
+    .skip-link:focus { top: 12px; }
+
     .hero-manifest {
       font-family: var(--font-sans);
       font-size: clamp(26px, 6.2vw, 58px);
@@ -707,7 +717,7 @@
       outline: none;
       transition: border-color .18s ease;
     }
-    .portal-input::placeholder { color: #465264; }
+    .portal-input::placeholder { color: #6d7a8c; }
     .portal-input:focus { border-color: var(--cyan); box-shadow: 0 0 22px rgba(0,240,255,.2); }
     .portal-btn {
       background: var(--cyan);
@@ -803,7 +813,7 @@
     .copyright {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: #465264;
+      color: #6d7a8c;
       letter-spacing: 0.08em;
     }
 
@@ -861,6 +871,8 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#listen">Skip to content</a>
 
   <!-- NAV -->
   <nav class="site-nav">
