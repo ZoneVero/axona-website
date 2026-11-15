@@ -1,0 +1,26 @@
+{
+  "portraits": {
+    "synthex": "/press-assets/v2/axona-synthex-portrait.jpg",
+    "neura": "/press-assets/v2/axona-neura-portrait.jpg",
+    "overclock": "/press-assets/v2/axona-overclock-portrait.jpg",
+    "glitch": "/press-assets/v2/axona-glitch-portrait.jpg"
+  },
+  "cards": {
+    "synthex": "/press-assets/v2/axona-synthex-card.jpg",
+    "neura": "/press-assets/v2/axona-neura-card.jpg",
+    "overclock": "/press-assets/v2/axona-overclock-card.jpg",
+    "glitch": "/press-assets/v2/axona-glitch-card.jpg"
+  },
+  "heroes": {
+    "synthex": "/press-assets/v2/axona-synthex-hero.jpg",
+    "neura": "/press-assets/v2/axona-neura-hero.jpg",
+    "overclock": "/press-assets/v2/axona-overclock-hero.jpg",
+    "glitch": "/press-assets/v2/axona-glitch-hero.jpg"
+  },
+  "logo": {
+    "logo-wordmark": "/press-assets/v2/logo-wordmark.png",
+    "logo-icon": "/press-assets/v2/logo-icon.png"
+  },
+  "cover": "/press-assets/v2/axona-cover-1500.jpg",
+  "lineup": "/press-assets/v2/axona-lineup-1920.jpg"
+}

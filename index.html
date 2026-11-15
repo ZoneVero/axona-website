@@ -86,7 +86,7 @@
         },
         "image": [
           "https://weareaxona.com/og-cover.jpg",
-          "https://media.weareaxona.com/axona/cover/cover-official-v3b.jpg"
+          "/press-assets/v2/axona-cover-1500.jpg"
         ],
         "slogan": "We Are The Impulse",
         "foundingDate": "2026",
@@ -148,7 +148,7 @@
         "byArtist": { "@id": "https://weareaxona.com/#musicgroup" },
         "datePublished": "2026-12-11",
         "genre": ["Cyber Metalcore", "Industrial Metal"],
-        "image": "https://media.weareaxona.com/axona/cover/cover-official-v3b.jpg",
+        "image": "/press-assets/v2/axona-cover-1500.jpg",
         "url": "https://weareaxona.com/#listen",
         "potentialAction": {
           "@type": "ListenAction",
@@ -289,10 +289,11 @@
       z-index: 15;
     }
     .nav-logo {
-      height: clamp(34px, 5vw, 46px);
+      /* Wordmark lockup (2.87:1). Height-driven so it optically matches the
+         nav links; width follows automatically. */
+      height: clamp(22px, 3.2vw, 30px);
       width: auto;
       display: block;
-      border-radius: 4px;
     }
     .nav-actions { display: flex; align-items: center; gap: 14px; }
     .nav-cta {
@@ -649,13 +650,25 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--cyan), transparent);
-      opacity: .55;
+      background: linear-gradient(90deg, var(--vessel-accent, var(--cyan)), transparent);
+      opacity: .7;
     }
     .vessel-card:hover {
-      border-color: rgba(0,240,255,.42);
+      border-color: var(--vessel-accent, rgba(0,240,255,.42));
       transform: translateY(-3px);
       box-shadow: 0 16px 42px rgba(0,240,255,.09);
+    }
+    /* Portrait sits flush to the card edges; the card's own padding is
+       cancelled with a negative margin so the image reads as a header band. */
+    .vessel-portrait {
+      display: block;
+      width: calc(100% + 44px);
+      margin: -26px -22px 18px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 22%;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      filter: saturate(1.02) contrast(1.03);
     }
     .vessel-num {
       font-family: var(--font-mono);
@@ -897,7 +910,7 @@
   <!-- NAV -->
   <nav class="site-nav">
     <a href="/" aria-label="AXONA home">
-      <img class="nav-logo" src="/logo.webp" alt="AXONA" width="512" height="512">
+      <img class="nav-logo" src="/logo-wordmark.webp" alt="AXONA" width="1116" height="389">
     </a>
     <div class="nav-actions">
       <a class="nav-link" href="/about/">About</a>
@@ -969,7 +982,7 @@
 
       <div class="listen-block">
         <img class="listen-cover"
-             src="https://media.weareaxona.com/axona/cover/cover-official-v3b.jpg"
+             src="/press-assets/v2/axona-cover-1500.jpg"
              alt="AXONA — We Are The Impulse official cover artwork"
              loading="lazy" width="300" height="300">
         <div class="listen-info">
@@ -996,7 +1009,8 @@
       <h2 class="sec-head">Four vessels. One signal.</h2>
       <p class="sec-sub">AXONA is not a band in the traditional sense. It is four autonomous identities operating as a single transmission.</p>
       <div class="vessels-grid">
-        <article class="vessel-card" id="synthex">
+        <article class="vessel-card" id="synthex" style="--vessel-accent:#00E5FF">
+          <img class="vessel-portrait" src="/char/synthex-card.jpg" alt="SYNTHEX — Lead Vocals & Signal Anchor" loading="lazy" width="640" height="800">
           <p class="vessel-num">Vessel 01</p>
           <h3 class="vessel-name">SYNTHEX</h3>
           <p class="vessel-role">Lead Vocals &amp; Signal Anchor</p>
@@ -1005,7 +1019,8 @@
           <a class="vessel-more" href="/synthex/">&rarr; READ FILE</a>
         </article>
 
-        <article class="vessel-card" id="neura">
+        <article class="vessel-card" id="neura" style="--vessel-accent:#9D00FF">
+          <img class="vessel-portrait" src="/char/neura-card.jpg" alt="NEURA — Lead Guitar & Bionic Execution" loading="lazy" width="640" height="800">
           <p class="vessel-num">Vessel 02</p>
           <h3 class="vessel-name">NEURA</h3>
           <p class="vessel-role">Lead Guitar &amp; Bionic Execution</p>
@@ -1014,7 +1029,8 @@
           <a class="vessel-more" href="/neura/">&rarr; READ FILE</a>
         </article>
 
-        <article class="vessel-card" id="overclock">
+        <article class="vessel-card" id="overclock" style="--vessel-accent:#FF3B1F">
+          <img class="vessel-portrait" src="/char/overclock-card.jpg" alt="OVERCLOCK — Industrial Percussion" loading="lazy" width="640" height="800">
           <p class="vessel-num">Vessel 03</p>
           <h3 class="vessel-name">OVERCLOCK</h3>
           <p class="vessel-role">Industrial Percussion · 150 BPM</p>
@@ -1023,7 +1039,8 @@
           <a class="vessel-more" href="/overclock/">&rarr; READ FILE</a>
         </article>
 
-        <article class="vessel-card" id="glitch">
+        <article class="vessel-card" id="glitch" style="--vessel-accent:#1FA89A">
+          <img class="vessel-portrait" src="/char/glitch-card.jpg" alt="GLITCH — Modular Synthesis" loading="lazy" width="640" height="800">
           <p class="vessel-num">Vessel 04</p>
           <h3 class="vessel-name">GLITCH</h3>
           <p class="vessel-role">Modular Synthesis &amp; Sound Design</p>
