@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>OAuth callback — AXONA</title>
+<style>
+  :root{--bg:#05070C;--fg:#F2F5F8;--mute:#8A94A6;--cyan:#00E5FF;}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;
+       background:var(--bg);color:var(--fg);
+       font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;padding:24px}
+  .card{max-width:680px;width:100%;border:1px solid #1b2230;border-radius:10px;
+        padding:28px;background:#080b11}
+  h1{margin:0 0 4px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--cyan);font-weight:600}
+  p{margin:0 0 18px;color:var(--mute);font-size:13px}
+  label{display:block;margin:18px 0 6px;font-size:11px;letter-spacing:.1em;
+        text-transform:uppercase;color:var(--mute)}
+  .val{word-break:break-all;background:#0d1219;border:1px solid #1b2230;
+       border-radius:6px;padding:12px;font-size:12px;color:var(--fg);user-select:all}
+  .row{display:flex;gap:8px;align-items:center;margin-top:8px}
+  button{background:var(--cyan);color:#05070C;border:0;border-radius:6px;
+         padding:9px 16px;font:inherit;font-weight:600;cursor:pointer;font-size:12px}
+  button:active{transform:translateY(1px)}
+  .ok{color:var(--cyan)}
+  .err{color:#FF7A7A}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1 id="hd">OAuth callback</h1>
+  <p id="sub">Reading the authorization response…</p>
+
+  <div id="okbox" class="hidden">
+    <label>Authorization code — copy this and send it back</label>
+    <div class="val" id="code"></div>
+    <div class="row"><button id="cp">Copy code</button><span id="cpmsg" class="ok"></span></div>
+    <label>Or copy the whole URL</label>
+    <div class="val" id="fullurl"></div>
+    <div class="row"><button id="cp2">Copy URL</button><span id="cpmsg2" class="ok"></span></div>
+  </div>
+
+  <div id="errbox" class="hidden">
+    <label>Error</label>
+    <div class="val err" id="err"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var hash = new URLSearchParams(location.hash.slice(1));
+  var code = q.get('code') || hash.get('code');
+  var err = q.get('error') || hash.get('error');
+  var desc = q.get('error_description') || hash.get('error_description');
+
+  var hd = document.getElementById('hd');
+  var sub = document.getElementById('sub');
+
+  if (code) {
+    hd.textContent = 'Authorized';
+    sub.textContent = 'Send the code below back to the agent to finish connecting.';
+    document.getElementById('code').textContent = code;
+    document.getElementById('fullurl').textContent = location.href;
+    document.getElementById('okbox').classList.remove('hidden');
+  } else if (err) {
+    hd.textContent = 'Authorization failed';
+    hd.className = 'err';
+    sub.textContent = 'Solmi returned an error instead of a code.';
+    document.getElementById('err').textContent = err + (desc ? ' — ' + desc : '');
+    document.getElementById('errbox').classList.remove('hidden');
+  } else {
+    hd.textContent = 'Nothing to read';
+    sub.textContent = 'This page expects a ?code= parameter from Solmi. '
+                    + 'Open the authorize link the agent gave you.';
+    document.getElementById('err').textContent = location.href;
+    document.getElementById('errbox').classList.remove('hidden');
+  }
+
+  function copy(txt, btnId, msgId) {
+    var msg = document.getElementById(msgId);
+    var done = function () {
+      msg.textContent = 'copied';
+      setTimeout(function () { msg.textContent = ''; }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function () { fallback(txt, done); });
+    } else { fallback(txt, done); }
+  }
+  function fallback(txt, done) {
+    var t = document.createElement('textarea');
+    t.value = txt; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(t);
+  }
+
+  var c1 = document.getElementById('cp');
+  var c2 = document.getElementById('cp2');
+  if (c1) c1.addEventListener('click', function () {
+    copy(document.getElementById('code').textContent, 'cp', 'cpmsg');
+  });
+  if (c2) c2.addEventListener('click', function () {
+    copy(location.href, 'cp2', 'cpmsg2');
+  });
+})();
+</script>
+</body>
+</html>
