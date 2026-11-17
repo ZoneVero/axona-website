@@ -58,7 +58,7 @@
   <link rel="alternate" type="text/plain" href="/llms.txt" title="AXONA — machine-readable summary">
 
   <!-- ==================== PERFORMANCE ==================== -->
-  <link rel="preload" as="image" href="/lineup-poster.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/logo/logo-main-960.webp" type="image/webp" fetchpriority="high">
   <link rel="dns-prefetch" href="https://media.weareaxona.com">
   <link rel="preconnect" href="https://media.weareaxona.com" crossorigin>
 
@@ -353,13 +353,32 @@
       overflow: hidden;
     }
 
-    .hero video {
-      position: absolute;
-      inset: 0;
+    .hero {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 8px;
+    }
+    /* Animated logo = visual block at the top of the hero (the loop carries
+       the wordmark, so text/countdown sit below it, never over it). Edges
+       are feathered into the page background. */
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 760px);
+      aspect-ratio: 720 / 406;
+      flex: none;
+    }
+    .hero-logo video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
+      display: block;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%),
+                          linear-gradient(to bottom, transparent 0, #000 16%, #000 80%, transparent 100%);
+      -webkit-mask-composite: source-in;
+              mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%),
+                          linear-gradient(to bottom, transparent 0, #000 16%, #000 80%, transparent 100%);
+              mask-composite: intersect;
     }
 
     .hero::after {
@@ -376,8 +395,9 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 40px 22px;
+      padding: 0 22px 48px;
       max-width: 860px;
+      margin-top: -8px;
     }
 
     .brand-title {
@@ -928,9 +948,12 @@
 
   <!-- HERO -->
   <header class="hero">
-    <video id="hero-video" autoplay muted loop playsinline preload="none" poster="/lineup-poster.jpg" aria-label="AXONA lineup reveal video" width="1280" height="720">
-      <source src="/lineup-reveal.mp4" type="video/mp4">
-    </video>
+    <div class="hero-logo">
+      <video id="hero-video" autoplay muted loop playsinline preload="none" poster="/logo/logo-main-960.webp" aria-label="AXONA animated logo" width="720" height="406">
+        <source src="/logo/logo-loop-720.webm" type="video/webm">
+        <source src="/logo/logo-loop-720.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <div class="hero-content">
       <h1 class="hero-title">AXONA — We Are The Impulse</h1>
