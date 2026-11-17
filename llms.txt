@@ -1,6 +1,6 @@
 # AXONA
 
-> AXONA is a cyber-metalcore collective built around four autonomous characters (called "vessels"): Synthex, Neura, Overclock and Glitch. The debut single "We Are The Impulse" releases 11 December 2026. The music combines eight-string guitars, industrial percussion at 150 BPM and modular synthesis.
+> AXONA is a cyber-metalcore collective built around four autonomous characters (called "vessels"): Synthex, Neura, Overclock and Glitch. The debut single "We Are The Impulse" releases 11 December 2026. The music combines eight-string guitars, industrial percussion at 152 BPM and modular synthesis.
 
 ## Identity
 
@@ -15,7 +15,7 @@
 
 - **Synthex** — Lead vocals and signal anchor. A vocoder-shaped synthetic vocal identity. Black mesh mask with a glowing cyan horizontal visor.
 - **Neura** — Lead guitar, bionic execution. Plays eight-string guitars through a prosthetic arm. Magenta visor and cybernetic prosthetic.
-- **Overclock** — Industrial percussion at 150 BPM. Acoustic drums fused with hydraulic machinery. Orange visor, gas-mask style respirator.
+- **Overclock** — Industrial percussion at 152 BPM. Acoustic drums fused with hydraulic machinery. Orange visor, gas-mask style respirator.
 - **Glitch** — Modular synthesis and sound design. Black hooded figure, cyan horizontal slit, modular synth rig.
 
 ## Release
@@ -23,7 +23,7 @@
 - Title: We Are The Impulse
 - Artist: AXONA
 - Type: Single
-- Duration: 4:51
+- Duration: 4:52
 - Release date: 11 December 2026
 - Composer and lyricist: Oanta Ciprian Nicolae
 - Pre-save: https://distrokid.com/hyperfollow/axona/we-are-the-impulse-2

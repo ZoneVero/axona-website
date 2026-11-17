@@ -119,7 +119,7 @@
             "name": "Overclock",
             "alternateName": "Vessel 03",
             "jobTitle": "Industrial Percussion",
-            "description": "Overclock drives AXONA's industrial percussion engine at 150 BPM, blending acoustic drums with hydraulic machinery.",
+            "description": "Overclock drives AXONA's industrial percussion engine at 152 BPM, blending acoustic drums with hydraulic machinery.",
             "memberOf": { "@id": "https://weareaxona.com/#musicgroup" }
           },
           {
@@ -161,7 +161,7 @@
         "name": "We Are The Impulse",
         "byArtist": { "@id": "https://weareaxona.com/#musicgroup" },
         "inAlbum": { "@id": "https://weareaxona.com/#we-are-the-impulse" },
-        "duration": "PT4M51S",
+        "duration": "PT4M52S",
         "datePublished": "2026-12-11",
         "genre": "Cyber Metalcore",
         "composer": {
@@ -217,7 +217,7 @@
             "name": "Who are the members of AXONA?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AXONA has four members: Synthex on lead vocals and signal anchor, Neura on lead guitar and bionic execution, Overclock on industrial percussion at 150 BPM, and Glitch on modular synthesizers and sound design."
+              "text": "AXONA has four members: Synthex on lead vocals and signal anchor, Neura on lead guitar and bionic execution, Overclock on industrial percussion at 152 BPM, and Glitch on modular synthesizers and sound design."
             }
           },
           {
@@ -485,6 +485,15 @@
       text-transform: uppercase;
       margin-bottom: 30px;
       text-shadow: 0 0 26px rgba(0,240,255,.5);
+    }
+
+    /* ---------- release date (visible, works without JS) ---------- */
+    .release-date {
+      margin: -6px 0 18px;
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.62);
     }
 
     /* ---------- countdown ---------- */
@@ -791,7 +800,7 @@
       max-width: 560px; margin: 12px auto 0; text-align: left;
       font-size: 12px; line-height: 1.55; color: #8b98a8;
     }
-    .portal-consent label {
+    .portal-consent {
       display: flex; gap: 9px; align-items: flex-start; cursor: pointer;
     }
     .portal-consent input[type="checkbox"] {
@@ -959,6 +968,7 @@
       <h1 class="sr-only">AXONA — We Are The Impulse</h1>
       <p class="hero-manifest">Ignore the algorithm.<br>Feed the machine.</p>
       <p class="track-title">We Are The Impulse</p>
+      <p class="release-date">Out 11 December 2026 · 20:00 EET / 18:00 UTC</p>
 
       <div class="countdown" id="countdown" aria-live="polite" aria-label="Countdown to release">
         <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-lbl">Days</span></div>
@@ -1013,7 +1023,7 @@
           <p class="listen-artist">AXONA</p>
           <div class="listen-meta">
             <span class="tag">Cyber Metalcore</span>
-            <span class="tag">4:51</span>
+            <span class="tag">4:52</span>
             <span class="tag">Out 11.12.2026</span>
             <span class="tag">Single</span>
           </div>
@@ -1056,8 +1066,8 @@
           <img class="vessel-portrait" src="/char/overclock-card.jpg" alt="OVERCLOCK — Industrial Percussion" loading="lazy" width="640" height="800">
           <p class="vessel-num">Vessel 03</p>
           <h3 class="vessel-name">OVERCLOCK</h3>
-          <p class="vessel-role">Industrial Percussion · 150 BPM</p>
-          <p class="vessel-desc">The engine room. Acoustic drums fused with hydraulic machinery, driving a relentless 150 BPM pulse that defines the AXONA tempo.</p>
+          <p class="vessel-role">Industrial Percussion · 152 BPM</p>
+          <p class="vessel-desc">The engine room. Acoustic drums fused with hydraulic machinery, driving a relentless 152 BPM pulse that defines the AXONA tempo.</p>
         
           <a class="vessel-more" href="/overclock/">&rarr; READ FILE</a>
         </article>
@@ -1106,7 +1116,8 @@
           Join the transmission. Get the release alert, unreleased fragments and encrypted dossiers before global streaming distribution.
         </p>
 
-        <form class="portal-form" id="frequency-form">
+        <form class="portal-form" id="frequency-form" method="post"
+              action="https://subscribe.weareaxona.com/subscribe">
           <input class="portal-input" type="email" id="email-input" name="email"
                  placeholder="operator@network.com" required autocomplete="email"
                  aria-label="Your email address">
@@ -1116,16 +1127,19 @@
             <input type="text" id="hp-website" name="website" tabindex="-1"
                    autocomplete="off" value="">
           </div>
-          <button class="portal-btn" type="submit" id="submit-btn">Decode</button>
-        </form>
-        <p class="portal-consent" id="portal-consent">
-          <label for="consent-check">
-            <input type="checkbox" id="consent-check" required>
+          <label class="portal-consent" id="portal-consent" for="consent-check">
+            <input type="checkbox" id="consent-check" name="consent" value="yes" required>
             <span>I agree to receive occasional emails about AXONA releases. No
             sharing, no selling — unsubscribe in one click. See the
             <a href="/privacy/">privacy policy</a>.</span>
           </label>
-        </p>
+          <button class="portal-btn" type="submit" id="submit-btn">Decode</button>
+        </form>
+        <noscript>
+          <p class="portal-consent">JavaScript is off. The form still works: it
+          sends your address securely over POST, and you'll get a confirmation
+          email with a link to finish signing up.</p>
+        </noscript>
         <div class="status-alert" id="status-message" role="status" aria-live="polite"></div>
       </div>
     </div>
@@ -1149,7 +1163,7 @@
 
       <div class="faq-item">
         <h3 class="faq-q">Who are the members of AXONA?</h3>
-        <p class="faq-a">Four: Synthex (lead vocals, signal anchor), Neura (lead guitar, bionic execution), Overclock (industrial percussion at 150 BPM) and Glitch (modular synthesizers, sound design).</p>
+        <p class="faq-a">Four: Synthex (lead vocals, signal anchor), Neura (lead guitar, bionic execution), Overclock (industrial percussion at 152 BPM) and Glitch (modular synthesizers, sound design).</p>
       </div>
 
       <div class="faq-item">
@@ -1194,7 +1208,7 @@
   <script>
     // ---------- COUNTDOWN ----------
     (function () {
-      const target = new Date('2026-12-11T00:01:00+02:00').getTime();
+      const target = new Date('2026-12-11T18:00:00Z').getTime();
       const el = document.getElementById('countdown');
       const dEl = document.getElementById('cd-d');
       const hEl = document.getElementById('cd-h');

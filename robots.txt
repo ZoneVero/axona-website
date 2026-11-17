@@ -1,36 +1,58 @@
 User-agent: *
 Allow: /
-# Never index audio masters or previews — they are for humans,
-# not for training corpora or automated re-upload.
-Disallow: /axona/audio/
 Disallow: /_private/
 
-# AI / LLM crawlers — explicit permission for retrieval and citation
-User-agent: GPTBot
-Allow: /
+# ── AI crawlers: retrieval and citation yes, model training opted out ────
+# Reason: the catalogue is original work. Being quoted in an AI answer is
+# fine; being folded into a training corpus without a licence is not.
+# Each named group must repeat the private exclusions, because a crawler
+# obeys only the most specific group that names it.
 
+# Retrieval / live-browsing agents — allowed, private paths excluded
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /_private/
 
 User-agent: ChatGPT-User
 Allow: /
-
-User-agent: ClaudeBot
-Allow: /
+Disallow: /_private/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /_private/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /_private/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /_private/
+
+User-agent: Applebot
+Allow: /
+Disallow: /_private/
+
+# Training-only crawlers — refused
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
 
 User-agent: Google-Extended
-Allow: /
+Disallow: /
 
 User-agent: Applebot-Extended
-Allow: /
+Disallow: /
 
 User-agent: CCBot
-Allow: /
+Disallow: /
 
 User-agent: meta-externalagent
-Allow: /
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
 
 Sitemap: https://weareaxona.com/sitemap.xml
