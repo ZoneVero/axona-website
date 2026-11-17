@@ -26,6 +26,25 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
 <style>
+    .crumbs {
+      padding: 14px 0 0;
+      opacity: .72;
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .crumbs ol {
+      list-style: none; display: flex; flex-wrap: wrap;
+      gap: 0; margin: 0; padding: 0;
+    }
+    .crumbs li { display: flex; align-items: center; }
+    .crumbs li + li::before {
+      content: "\2192"; margin: 0 9px; opacity: .38;
+    }
+    .crumbs a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+    .crumbs a:hover { border-color: currentColor; }
+    .crumbs [aria-current="page"] { opacity: .58; }
   :root{
     --bg:#05070c; --ink:#e0e6ed; --dim:#8b98a8; --line:#1a2029;
     --accent:#9D00FF;
@@ -108,6 +127,15 @@
       "name": "AXONA",
       "url": "https://weareaxona.com/"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "AXONA", "item": "https://weareaxona.com/"},
+      {"@type": "ListItem", "position": 2, "name": "The Collective", "item": "https://weareaxona.com/#vessels"},
+      {"@type": "ListItem", "position": 3, "name": "NEURA", "item": "https://weareaxona.com/neura/"}
+    ]
   }
 ]
   </script>
@@ -121,6 +149,16 @@
     <a class="back" href="/">&larr; BACK TO TRANSMISSION</a>
   </div>
 </nav>
+
+<div class="crumbs">
+  <div class="wrap">
+    <nav aria-label="Breadcrumb"><ol>
+      <li><a href="/">AXONA</a></li>
+      <li><a href="/#vessels">The Collective</a></li>
+      <li><span aria-current="page">NEURA</span></li>
+    </ol></nav>
+  </div>
+</div>
 
 <header class="hero">
   <img src="/char/neura-hero.jpg" alt="NEURA, lead guitar of AXONA" width="1200" height="1607">
