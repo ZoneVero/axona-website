@@ -644,15 +644,17 @@
     }
 
     /* ---------- vessels ---------- */
+    /* Context line: sits under READ FILE deliberately, not as an
+       accidental wrap. Carries the semantic label for crawlers. */
     .vessel-more .vmctx {
+      display: block;
+      margin-top: 5px;
       color: rgba(255,255,255,.40);
-      letter-spacing: 0.02em;
-      text-transform: none;
-      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 9.5px;
       white-space: nowrap;
     }
-    /* Keep the labelled link on one line where the card allows it */
-    .vessel-more { white-space: nowrap; }
     .vessel-more {
       display: inline-block;
       margin-top: 18px;
