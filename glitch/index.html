@@ -81,6 +81,16 @@
   .body-copy p{margin-bottom:19px}
   .body-copy p:first-child::first-letter{font-size:52px;font-weight:900;float:left;line-height:.86;padding:6px 12px 0 0;color:var(--accent)}
 
+  .portrait{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:clamp(28px,5vw,56px);align-items:start}
+  .portrait figure{margin:0;position:relative;border:1px solid var(--line);overflow:hidden;aspect-ratio:3/4;background:#070a11}
+  .portrait figure::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 90px 20px rgba(5,7,12,.5);pointer-events:none}
+  .portrait img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 30%}
+  .portrait .col .body-copy{margin-top:24px;max-width:600px}
+  @media(max-width:820px){
+    .portrait{grid-template-columns:1fr;gap:26px}
+    .portrait figure{max-width:420px;aspect-ratio:4/5}
+  }
+
   h2{font-family:var(--font-mono);font-size:11px;letter-spacing:.28em;color:var(--dim);text-transform:uppercase;margin-bottom:30px}
   .specs{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
   .specs div.row{display:grid;grid-template-columns:190px 1fr;background:var(--bg);padding:17px 20px;gap:18px}
@@ -172,12 +182,17 @@
 
 <section>
   <div class="wrap">
-    <p class="lead-q"><em>The error is the instrument.</em></p>
-    <div class="body-copy">
+    <div class="portrait">
+      <figure><img src="/char/glitch-portrait.jpg" alt="GLITCH, a hooded figure behind a single cyan slit"></figure>
+      <div class="col">
+        <p class="lead-q"><em>The error is the instrument.</em></p>
+        <div class="body-copy">
       <p>I take the sounds nobody wants — the click, the dropout, the patch that failed to load — and I make them the reason you replay the track.</p>
       <p>Modular rack, DJ controller, deliberate corruption. Most of what you hear from me was an accident I decided to keep.</p>
       <p>When PULSE drops to half-time, that is when I get to speak. Everything I do sits in the space he leaves.</p>
       <p>I post patch dissections, structure diagrams and occasionally a cipher. If you solve one, you were paying attention.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -187,9 +202,7 @@
     <h2>Specifications</h2>
     <dl class="specs">
       <div class="row"><dt>Instrument</dt><dd>Modular synth rack, DJ controller</dd></div>
-      <div class="row"><dt>Face</dt><dd>Narrow optical visor with neon violet line; black respirator</dd></div>
-      <div class="row"><dt>Signal</dt><dd>Asymmetric hood, phosphorescent glove lines</dd></div>
-      <div class="row"><dt>Camera</dt><dd>Rhythmic and calculated. Hands on filters, head on the beat.</dd></div>
+      <div class="row"><dt>Position</dt><dd>Texture and controlled corruption</dd></div>
     </dl>
   </div>
 </section>
